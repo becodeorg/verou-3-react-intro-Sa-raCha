@@ -1,13 +1,9 @@
-
+import Header from "./components/Header";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <a>
-          Learn React @becode
-        </a>
-      </header>
+    <div>
+      <Header/>
     </div>
   );
 }
