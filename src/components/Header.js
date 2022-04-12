@@ -4,9 +4,17 @@ import { useState } from "react";
 const Header = () => {
     const [text, setText] = useState("");
     const addText = (Event) => {
-        console.log("addText", Event.target.value);
+        setText(Event.target.value);
     }
- 
+    const keydownText = (Event) => {
+        const enterKey = Event.keyCode === 13;
+        const newText = text.trim();
+        const textFieldNotEmpty = newText.length > 0;
+    
+        if (enterKey && textFieldNotEmpty) {
+            console.log("keydownText", newText)
+        }
+    };
   
 
   return (
@@ -17,6 +25,7 @@ const Header = () => {
         placeholder="Add a new task"
         value={text}
         onChange={addText}
+        onKeyDown={keydownText}
         autoFocus
       />
     </header>
