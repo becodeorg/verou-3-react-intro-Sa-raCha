@@ -4,9 +4,9 @@ const initialState = {
     todos: [],
 };
 
-const reducer = (state, action) =>{
+const reducer = (state, action) => {
     switch (action.type) {
-        case "addTask":{
+        case "addTask": {
 
             const newTask = {
                 id: Math.random().toString(16),
@@ -18,12 +18,11 @@ const reducer = (state, action) =>{
                 ...state,
                 todos: [...state.todos, newTask]
             };
-        } 
+        };
             
         default: return state;
-    };
-    
-}
+    };   
+};
 
 export const TodolistContext = createContext();
 
