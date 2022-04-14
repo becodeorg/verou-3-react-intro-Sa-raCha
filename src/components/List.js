@@ -15,7 +15,16 @@ const List = () => {
     const visibleTodos = getVisibleTodos();
 
     console.log("visibleTodos", visibleTodos);
-    return <div>Hello</div>
+    return (
+        <section>
+          <ul className="todo-list">
+            {visibleTodos.map( todo => (
+                <li key={todo.id}>{todo.text}</li>
+            ))}
+          </ul>
+        </section>
+      );
+
 };
 
 export default List;
