@@ -1,10 +1,13 @@
 import Header from "./components/Header";
+import { TodolistProvider } from "./contexts/todolist";
 
 function App() {
   return (
-    <div>
-      <Header/>
-    </div>
+    <TodolistProvider>
+      <div>
+        <Header/>
+      </div>
+    </TodolistProvider>
   );
 }
 

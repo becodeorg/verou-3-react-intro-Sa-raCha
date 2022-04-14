@@ -1,8 +1,11 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { TodolistContext } from "../contexts/todolist";
 
 
 const Header = () => {
     const [text, setText] = useState("");
+    const [state ,dispatch] = useContext(TodolistContext)
+
     const addText = (Event) => {
         setText(Event.target.value);
     }
@@ -12,8 +15,9 @@ const Header = () => {
         const textFieldNotEmpty = newText.length > 0;
     
         if (enterKey && textFieldNotEmpty) {
-            console.log("keydownText", newText)
+          dispatch({ type: "addTask", payload: newText });
         }
+        
     };
   
 
