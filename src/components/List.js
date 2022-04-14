@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import { TodolistContext } from "../contexts/todolist";
+import Todo from "./Todo";
 
 const List = () => {
     const [state, dispatch] = useContext(TodolistContext)
@@ -20,7 +21,7 @@ const List = () => {
         <section className={`main ${todosEmpty}`}>
           <ul className="todo-list">
             {visibleTodos.map( todo => (
-                <li key={todo.id}>{todo.text}</li>
+                <Todo key={todo.id} todo={todo}/>
             ))}
           </ul>
         </section>
