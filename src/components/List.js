@@ -3,6 +3,7 @@ import { TodolistContext } from "../contexts/todolist";
 
 const List = () => {
     const [state, dispatch] = useContext(TodolistContext)
+    const todosEmpty = state.todos.length === 0 ? "hidden" : "";
 
     const getVisibleTodos = () => {
         if (state.filter === "active") {
@@ -16,7 +17,7 @@ const List = () => {
 
     console.log("visibleTodos", visibleTodos);
     return (
-        <section>
+        <section className={`main ${todosEmpty}`}>
           <ul className="todo-list">
             {visibleTodos.map( todo => (
                 <li key={todo.id}>{todo.text}</li>
