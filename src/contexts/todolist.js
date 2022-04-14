@@ -2,13 +2,24 @@ import { createContext, useReducer } from "react";
 
 const initialState = {
     todos: [],
-  };
+};
 
 const reducer = (state, action) =>{
     switch (action.type) {
-        case "addTask": 
-        console.log("action", state, action);
-        return state;
+        case "addTask":{
+
+            const newTask = {
+                id: Math.random().toString(16),
+                text: action.payload,
+                isCompleted: false
+            };
+
+            return {
+                ...state,
+                todos: [...state.todos, newTask]
+            };
+        } 
+            
         default: return state;
     };
     
