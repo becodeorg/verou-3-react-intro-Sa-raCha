@@ -2,6 +2,7 @@ import { createContext, useReducer } from "react";
 
 const initialState = {
     todos: [],
+    filter: "all",
 };
 
 const reducer = (state, action) => {
@@ -19,7 +20,44 @@ const reducer = (state, action) => {
                 todos: [...state.todos, newTask]
             };
         };
-            
+
+        case "toggleTodo": {
+
+            const updatedTodos = state.todos.map((todo) => {
+                if (todo.id === action.payload) {
+                return { ...todo, isCompleted: !todo.isCompleted };
+                }
+
+                return todo;
+            });
+
+            return {
+              ...state,
+              todos: updatedTodos,
+            };
+        }
+          case "changeTodo": {
+            const updatedTodos = state.todos.map((todo) => {
+              if (todo.id === action.payload.id) {
+                return { ...todo, text: action.payload.text };
+              }
+              return todo;
+            });
+            return {
+              ...state,
+              todos: updatedTodos,
+            };
+          }
+          case "removeTodo": {
+            const updatedTodos = state.todos.filter(
+              (todo) => todo.id !== action.payload
+            );
+            return {
+              ...state,
+              todos: updatedTodos,
+            };
+          }
+          
         default: return state;
     };   
 };
